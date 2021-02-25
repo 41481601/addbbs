@@ -6,7 +6,8 @@ server:
 spring:
   ##数据库连接信息
   datasource:
-    url: jdbc:mysql://121.36.66.98:3306/mcSY?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/caijibbs?useUnicode=true&characterEncoding=utf8
+#    url: jdbc:mysql://121.36.66.98:3306/mcSY?useUnicode=true&characterEncoding=utf8
     #    url: jdbc:mysql://ricemc.cn:3306/mcSY?useUnicode=true&characterEncoding=utf8
     #    url: jdbc:mysql://fansooo.cn:3306/tomato?useUnicode=true&characterEncoding=utf8
     username: root

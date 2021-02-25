@@ -19,7 +19,7 @@
         <!--数据库链接URL，用户名、密码
            1.一般jdbc数据库的版本6.x以上，都是com.mysql.cj.jdbc.Driver  其他的低版本就是com.mysql.jdbc.Driver
          -->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://ricemc.cn:3306/mcSY"
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/caijibbs"
                         userId="root" password="ljh520...">
             <!--解決8版本数据库生成会有BLOBs和Key的问题-->
             <property name="nullCatalogMeansCurrent" value="true" />
