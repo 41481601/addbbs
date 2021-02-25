@@ -34,11 +34,12 @@ import java.util.Random;
 @RequestMapping(value = "tomato")
 public class WxController {
     //依赖注入
-//    @Autowired
-//    private MyMapper myMapper;
-//
-//
-//
+    @Autowired
+    private BbspaquMapper bbspaquMapper;
+
+    @Autowired
+    private MyMapper myMapper;
+
 //    //region 测试接口
 //    @RequestMapping("/ex")
 //    @ResponseBody
@@ -56,5 +57,20 @@ public class WxController {
 //        return user;
 //    }
 //    //endregion
+
+    //region 查询bbspaqu表
+    @RequestMapping("/bbspaqu")
+    @ResponseBody
+    public List<Bbspaqu> addBiao(HttpServletRequest request, HttpServletResponse response
+    ) throws Exception {
+        List<Bbspaqu> bbspaqus = new ArrayList<>();
+        try{
+            bbspaqus = myMapper.selectAllBbs();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return bbspaqus;
+    }
+    //endregion
 
 }

@@ -1,5 +1,6 @@
 package cn.miaogu;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -10,6 +11,7 @@ import javax.servlet.MultipartConfigElement;
 /**
  * 修改启动类，继承 SpringBootServletInitializer 并重写 configure 方法
  */
+
 public class SpringBootStartApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.miaogu.dao.ForumPostMapper" >
+  <resultMap id="BaseResultMap" type="cn.miaogu.domain.ForumPost" >
+    <id column="tid" property="tid" jdbcType="INTEGER" />
+    <id column="position" property="position" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="fid" property="fid" jdbcType="INTEGER" />
+    <result column="first" property="first" jdbcType="BIT" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="authorid" property="authorid" jdbcType="INTEGER" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="dateline" property="dateline" jdbcType="INTEGER" />
+    <result column="useip" property="useip" jdbcType="VARCHAR" />
+    <result column="port" property="port" jdbcType="SMALLINT" />
+    <result column="invisible" property="invisible" jdbcType="BIT" />
+    <result column="anonymous" property="anonymous" jdbcType="BIT" />
+    <result column="usesig" property="usesig" jdbcType="BIT" />
+    <result column="htmlon" property="htmlon" jdbcType="BIT" />
+    <result column="bbcodeoff" property="bbcodeoff" jdbcType="BIT" />
+    <result column="smileyoff" property="smileyoff" jdbcType="BIT" />
+    <result column="parseurloff" property="parseurloff" jdbcType="BIT" />
+    <result column="attachment" property="attachment" jdbcType="BIT" />
+    <result column="rate" property="rate" jdbcType="SMALLINT" />
+    <result column="ratetimes" property="ratetimes" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="tags" property="tags" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="BIT" />
+    <result column="replycredit" property="replycredit" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.miaogu.domain.ForumPost" extends="BaseResultMap" >
+    <result column="message" property="message" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tid, position, pid, fid, first, author, authorid, subject, dateline, useip, port, 
+    invisible, anonymous, usesig, htmlon, bbcodeoff, smileyoff, parseurloff, attachment, 
+    rate, ratetimes, status, tags, comment, replycredit
+  </sql>
+  <sql id="Blob_Column_List" >
+    message
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="cn.miaogu.domain.ForumPostKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pre_forum_post
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.miaogu.domain.ForumPostKey" >
+    delete from pre_forum_post
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.miaogu.domain.ForumPost" >
+    insert into pre_forum_post (tid, position, pid, 
+      fid, first, author, authorid, 
+      subject, dateline, useip, 
+      port, invisible, anonymous, 
+      usesig, htmlon, bbcodeoff, smileyoff, 
+      parseurloff, attachment, rate, 
+      ratetimes, status, tags, 
+      comment, replycredit, message
+      )
+    values (#{tid,jdbcType=INTEGER}, #{position,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{fid,jdbcType=INTEGER}, #{first,jdbcType=BIT}, #{author,jdbcType=VARCHAR}, #{authorid,jdbcType=INTEGER}, 
+      #{subject,jdbcType=VARCHAR}, #{dateline,jdbcType=INTEGER}, #{useip,jdbcType=VARCHAR}, 
+      #{port,jdbcType=SMALLINT}, #{invisible,jdbcType=BIT}, #{anonymous,jdbcType=BIT}, 
+      #{usesig,jdbcType=BIT}, #{htmlon,jdbcType=BIT}, #{bbcodeoff,jdbcType=BIT}, #{smileyoff,jdbcType=BIT}, 
+      #{parseurloff,jdbcType=BIT}, #{attachment,jdbcType=BIT}, #{rate,jdbcType=SMALLINT}, 
+      #{ratetimes,jdbcType=TINYINT}, #{status,jdbcType=INTEGER}, #{tags,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=BIT}, #{replycredit,jdbcType=INTEGER}, #{message,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.miaogu.domain.ForumPost" >
+    insert into pre_forum_post
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="first != null" >
+        first,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="authorid != null" >
+        authorid,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="dateline != null" >
+        dateline,
+      </if>
+      <if test="useip != null" >
+        useip,
+      </if>
+      <if test="port != null" >
+        port,
+      </if>
+      <if test="invisible != null" >
+        invisible,
+      </if>
+      <if test="anonymous != null" >
+        anonymous,
+      </if>
+      <if test="usesig != null" >
+        usesig,
+      </if>
+      <if test="htmlon != null" >
+        htmlon,
+      </if>
+      <if test="bbcodeoff != null" >
+        bbcodeoff,
+      </if>
+      <if test="smileyoff != null" >
+        smileyoff,
+      </if>
+      <if test="parseurloff != null" >
+        parseurloff,
+      </if>
+      <if test="attachment != null" >
+        attachment,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="ratetimes != null" >
+        ratetimes,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="tags != null" >
+        tags,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="replycredit != null" >
+        replycredit,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="first != null" >
+        #{first,jdbcType=BIT},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="authorid != null" >
+        #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="dateline != null" >
+        #{dateline,jdbcType=INTEGER},
+      </if>
+      <if test="useip != null" >
+        #{useip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null" >
+        #{port,jdbcType=SMALLINT},
+      </if>
+      <if test="invisible != null" >
+        #{invisible,jdbcType=BIT},
+      </if>
+      <if test="anonymous != null" >
+        #{anonymous,jdbcType=BIT},
+      </if>
+      <if test="usesig != null" >
+        #{usesig,jdbcType=BIT},
+      </if>
+      <if test="htmlon != null" >
+        #{htmlon,jdbcType=BIT},
+      </if>
+      <if test="bbcodeoff != null" >
+        #{bbcodeoff,jdbcType=BIT},
+      </if>
+      <if test="smileyoff != null" >
+        #{smileyoff,jdbcType=BIT},
+      </if>
+      <if test="parseurloff != null" >
+        #{parseurloff,jdbcType=BIT},
+      </if>
+      <if test="attachment != null" >
+        #{attachment,jdbcType=BIT},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=SMALLINT},
+      </if>
+      <if test="ratetimes != null" >
+        #{ratetimes,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tags != null" >
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=BIT},
+      </if>
+      <if test="replycredit != null" >
+        #{replycredit,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.miaogu.domain.ForumPost" >
+    update pre_forum_post
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="first != null" >
+        first = #{first,jdbcType=BIT},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="authorid != null" >
+        authorid = #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="dateline != null" >
+        dateline = #{dateline,jdbcType=INTEGER},
+      </if>
+      <if test="useip != null" >
+        useip = #{useip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null" >
+        port = #{port,jdbcType=SMALLINT},
+      </if>
+      <if test="invisible != null" >
+        invisible = #{invisible,jdbcType=BIT},
+      </if>
+      <if test="anonymous != null" >
+        anonymous = #{anonymous,jdbcType=BIT},
+      </if>
+      <if test="usesig != null" >
+        usesig = #{usesig,jdbcType=BIT},
+      </if>
+      <if test="htmlon != null" >
+        htmlon = #{htmlon,jdbcType=BIT},
+      </if>
+      <if test="bbcodeoff != null" >
+        bbcodeoff = #{bbcodeoff,jdbcType=BIT},
+      </if>
+      <if test="smileyoff != null" >
+        smileyoff = #{smileyoff,jdbcType=BIT},
+      </if>
+      <if test="parseurloff != null" >
+        parseurloff = #{parseurloff,jdbcType=BIT},
+      </if>
+      <if test="attachment != null" >
+        attachment = #{attachment,jdbcType=BIT},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=SMALLINT},
+      </if>
+      <if test="ratetimes != null" >
+        ratetimes = #{ratetimes,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="tags != null" >
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=BIT},
+      </if>
+      <if test="replycredit != null" >
+        replycredit = #{replycredit,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.miaogu.domain.ForumPost" >
+    update pre_forum_post
+    set pid = #{pid,jdbcType=INTEGER},
+      fid = #{fid,jdbcType=INTEGER},
+      first = #{first,jdbcType=BIT},
+      author = #{author,jdbcType=VARCHAR},
+      authorid = #{authorid,jdbcType=INTEGER},
+      subject = #{subject,jdbcType=VARCHAR},
+      dateline = #{dateline,jdbcType=INTEGER},
+      useip = #{useip,jdbcType=VARCHAR},
+      port = #{port,jdbcType=SMALLINT},
+      invisible = #{invisible,jdbcType=BIT},
+      anonymous = #{anonymous,jdbcType=BIT},
+      usesig = #{usesig,jdbcType=BIT},
+      htmlon = #{htmlon,jdbcType=BIT},
+      bbcodeoff = #{bbcodeoff,jdbcType=BIT},
+      smileyoff = #{smileyoff,jdbcType=BIT},
+      parseurloff = #{parseurloff,jdbcType=BIT},
+      attachment = #{attachment,jdbcType=BIT},
+      rate = #{rate,jdbcType=SMALLINT},
+      ratetimes = #{ratetimes,jdbcType=TINYINT},
+      status = #{status,jdbcType=INTEGER},
+      tags = #{tags,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=BIT},
+      replycredit = #{replycredit,jdbcType=INTEGER},
+      message = #{message,jdbcType=LONGVARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.miaogu.domain.ForumPost" >
+    update pre_forum_post
+    set pid = #{pid,jdbcType=INTEGER},
+      fid = #{fid,jdbcType=INTEGER},
+      first = #{first,jdbcType=BIT},
+      author = #{author,jdbcType=VARCHAR},
+      authorid = #{authorid,jdbcType=INTEGER},
+      subject = #{subject,jdbcType=VARCHAR},
+      dateline = #{dateline,jdbcType=INTEGER},
+      useip = #{useip,jdbcType=VARCHAR},
+      port = #{port,jdbcType=SMALLINT},
+      invisible = #{invisible,jdbcType=BIT},
+      anonymous = #{anonymous,jdbcType=BIT},
+      usesig = #{usesig,jdbcType=BIT},
+      htmlon = #{htmlon,jdbcType=BIT},
+      bbcodeoff = #{bbcodeoff,jdbcType=BIT},
+      smileyoff = #{smileyoff,jdbcType=BIT},
+      parseurloff = #{parseurloff,jdbcType=BIT},
+      attachment = #{attachment,jdbcType=BIT},
+      rate = #{rate,jdbcType=SMALLINT},
+      ratetimes = #{ratetimes,jdbcType=TINYINT},
+      status = #{status,jdbcType=INTEGER},
+      tags = #{tags,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=BIT},
+      replycredit = #{replycredit,jdbcType=INTEGER}
+    where tid = #{tid,jdbcType=INTEGER}
+      and position = #{position,jdbcType=INTEGER}
+  </update>
+</mapper>
