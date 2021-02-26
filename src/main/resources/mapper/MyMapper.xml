@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.miaogu.dao.MyMapper" >
+    <select id="selectAllBbs" resultType="cn.miaogu.domain.Bbspaqu">
+        select * from bbspaqu
+    </select>
+
+    <!-- 插入数据获取返回值。-->
+    <insert id="insertForum" parameterType="cn.miaogu.domain.ForumPostTableid" useGeneratedKeys="true" keyProperty="pid">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="pid">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO pre_forum_post_tableid (pid) values (0)
+    </insert>
+
+    <insert id="addForumThread" parameterType="cn.miaogu.domain.ForumThread" >
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="tid">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO pre_forum_thread
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="tid != null" >
+                tid,
+            </if>
+            <if test="fid != null" >
+                fid,
+            </if>
+            <if test="posttableid != null" >
+                posttableid,
+            </if>
+            <if test="typeid != null" >
+                typeid,
+            </if>
+            <if test="sortid != null" >
+                sortid,
+            </if>
+            <if test="readperm != null" >
+                readperm,
+            </if>
+            <if test="price != null" >
+                price,
+            </if>
+            <if test="author != null" >
+                author,
+            </if>
+            <if test="authorid != null" >
+                authorid,
+            </if>
+            <if test="subject != null" >
+                subject,
+            </if>
+            <if test="dateline != null" >
+                dateline,
+            </if>
+            <if test="lastpost != null" >
+                lastpost,
+            </if>
+            <if test="lastposter != null" >
+                lastposter,
+            </if>
+            <if test="views != null" >
+                views,
+            </if>
+            <if test="replies != null" >
+                replies,
+            </if>
+            <if test="displayorder != null" >
+                displayorder,
+            </if>
+            <if test="highlight != null" >
+                highlight,
+            </if>
+            <if test="digest != null" >
+                digest,
+            </if>
+            <if test="rate != null" >
+                rate,
+            </if>
+            <if test="special != null" >
+                special,
+            </if>
+            <if test="attachment != null" >
+                attachment,
+            </if>
+            <if test="moderated != null" >
+                moderated,
+            </if>
+            <if test="closed != null" >
+                closed,
+            </if>
+            <if test="stickreply != null" >
+                stickreply,
+            </if>
+            <if test="recommends != null" >
+                recommends,
+            </if>
+            <if test="recommendAdd != null" >
+                recommend_add,
+            </if>
+            <if test="recommendSub != null" >
+                recommend_sub,
+            </if>
+            <if test="heats != null" >
+                heats,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="isgroup != null" >
+                isgroup,
+            </if>
+            <if test="favtimes != null" >
+                favtimes,
+            </if>
+            <if test="sharetimes != null" >
+                sharetimes,
+            </if>
+            <if test="stamp != null" >
+                stamp,
+            </if>
+            <if test="icon != null" >
+                icon,
+            </if>
+            <if test="pushedaid != null" >
+                pushedaid,
+            </if>
+            <if test="cover != null" >
+                cover,
+            </if>
+            <if test="replycredit != null" >
+                replycredit,
+            </if>
+            <if test="relatebytag != null" >
+                relatebytag,
+            </if>
+            <if test="maxposition != null" >
+                maxposition,
+            </if>
+            <if test="bgcolor != null" >
+                bgcolor,
+            </if>
+            <if test="comments != null" >
+                comments,
+            </if>
+            <if test="hidden != null" >
+                hidden,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="tid != null" >
+                #{tid,jdbcType=INTEGER},
+            </if>
+            <if test="fid != null" >
+                #{fid,jdbcType=INTEGER},
+            </if>
+            <if test="posttableid != null" >
+                #{posttableid,jdbcType=SMALLINT},
+            </if>
+            <if test="typeid != null" >
+                #{typeid,jdbcType=SMALLINT},
+            </if>
+            <if test="sortid != null" >
+                #{sortid,jdbcType=SMALLINT},
+            </if>
+            <if test="readperm != null" >
+                #{readperm,jdbcType=TINYINT},
+            </if>
+            <if test="price != null" >
+                #{price,jdbcType=SMALLINT},
+            </if>
+            <if test="author != null" >
+                #{author,jdbcType=CHAR},
+            </if>
+            <if test="authorid != null" >
+                #{authorid,jdbcType=INTEGER},
+            </if>
+            <if test="subject != null" >
+                #{subject,jdbcType=CHAR},
+            </if>
+            <if test="dateline != null" >
+                #{dateline,jdbcType=INTEGER},
+            </if>
+            <if test="lastpost != null" >
+                #{lastpost,jdbcType=INTEGER},
+            </if>
+            <if test="lastposter != null" >
+                #{lastposter,jdbcType=CHAR},
+            </if>
+            <if test="views != null" >
+                #{views,jdbcType=INTEGER},
+            </if>
+            <if test="replies != null" >
+                #{replies,jdbcType=INTEGER},
+            </if>
+            <if test="displayorder != null" >
+                #{displayorder,jdbcType=BIT},
+            </if>
+            <if test="highlight != null" >
+                #{highlight,jdbcType=BIT},
+            </if>
+            <if test="digest != null" >
+                #{digest,jdbcType=BIT},
+            </if>
+            <if test="rate != null" >
+                #{rate,jdbcType=BIT},
+            </if>
+            <if test="special != null" >
+                #{special,jdbcType=BIT},
+            </if>
+            <if test="attachment != null" >
+                #{attachment,jdbcType=BIT},
+            </if>
+            <if test="moderated != null" >
+                #{moderated,jdbcType=BIT},
+            </if>
+            <if test="closed != null" >
+                #{closed,jdbcType=INTEGER},
+            </if>
+            <if test="stickreply != null" >
+                #{stickreply,jdbcType=BIT},
+            </if>
+            <if test="recommends != null" >
+                #{recommends,jdbcType=SMALLINT},
+            </if>
+            <if test="recommendAdd != null" >
+                #{recommendAdd,jdbcType=SMALLINT},
+            </if>
+            <if test="recommendSub != null" >
+                #{recommendSub,jdbcType=SMALLINT},
+            </if>
+            <if test="heats != null" >
+                #{heats,jdbcType=INTEGER},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=SMALLINT},
+            </if>
+            <if test="isgroup != null" >
+                #{isgroup,jdbcType=BIT},
+            </if>
+            <if test="favtimes != null" >
+                #{favtimes,jdbcType=INTEGER},
+            </if>
+            <if test="sharetimes != null" >
+                #{sharetimes,jdbcType=INTEGER},
+            </if>
+            <if test="stamp != null" >
+                #{stamp,jdbcType=TINYINT},
+            </if>
+            <if test="icon != null" >
+                #{icon,jdbcType=TINYINT},
+            </if>
+            <if test="pushedaid != null" >
+                #{pushedaid,jdbcType=INTEGER},
+            </if>
+            <if test="cover != null" >
+                #{cover,jdbcType=SMALLINT},
+            </if>
+            <if test="replycredit != null" >
+                #{replycredit,jdbcType=SMALLINT},
+            </if>
+            <if test="relatebytag != null" >
+                #{relatebytag,jdbcType=CHAR},
+            </if>
+            <if test="maxposition != null" >
+                #{maxposition,jdbcType=INTEGER},
+            </if>
+            <if test="bgcolor != null" >
+                #{bgcolor,jdbcType=CHAR},
+            </if>
+            <if test="comments != null" >
+                #{comments,jdbcType=INTEGER},
+            </if>
+            <if test="hidden != null" >
+                #{hidden,jdbcType=SMALLINT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateCommonMemberCount" parameterType="java.lang.Integer" >
+        update pre_common_member_count
+        set posts += 1,
+            threads += 1
+        where uid = #{uid,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateForumForum" parameterType="cn.miaogu.domain.ForumForum" >
+        update pre_forum_forum
+        set threads += 1,
+            posts += 1,
+            todayposts += 1,
+            lastpost = #{lastpost}
+        where fid = #{fid,jdbcType=INTEGER}
+    </update>
+
+</mapper>
