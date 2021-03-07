@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.miaogu.dao.ForumThreadMapper" >
+  <resultMap id="BaseResultMap" type="cn.miaogu.domain.ForumThread" >
+    <id column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="fid" property="fid" jdbcType="INTEGER" />
+    <result column="posttableid" property="posttableid" jdbcType="SMALLINT" />
+    <result column="typeid" property="typeid" jdbcType="SMALLINT" />
+    <result column="sortid" property="sortid" jdbcType="SMALLINT" />
+    <result column="readperm" property="readperm" jdbcType="TINYINT" />
+    <result column="price" property="price" jdbcType="SMALLINT" />
+    <result column="author" property="author" jdbcType="CHAR" />
+    <result column="authorid" property="authorid" jdbcType="INTEGER" />
+    <result column="subject" property="subject" jdbcType="CHAR" />
+    <result column="dateline" property="dateline" jdbcType="INTEGER" />
+    <result column="lastpost" property="lastpost" jdbcType="INTEGER" />
+    <result column="lastposter" property="lastposter" jdbcType="CHAR" />
+    <result column="views" property="views" jdbcType="INTEGER" />
+    <result column="replies" property="replies" jdbcType="INTEGER" />
+    <result column="displayorder" property="displayorder" jdbcType="BIT" />
+    <result column="highlight" property="highlight" jdbcType="BIT" />
+    <result column="digest" property="digest" jdbcType="BIT" />
+    <result column="rate" property="rate" jdbcType="BIT" />
+    <result column="special" property="special" jdbcType="BIT" />
+    <result column="attachment" property="attachment" jdbcType="BIT" />
+    <result column="moderated" property="moderated" jdbcType="BIT" />
+    <result column="closed" property="closed" jdbcType="INTEGER" />
+    <result column="stickreply" property="stickreply" jdbcType="BIT" />
+    <result column="recommends" property="recommends" jdbcType="SMALLINT" />
+    <result column="recommend_add" property="recommendAdd" jdbcType="SMALLINT" />
+    <result column="recommend_sub" property="recommendSub" jdbcType="SMALLINT" />
+    <result column="heats" property="heats" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="isgroup" property="isgroup" jdbcType="BIT" />
+    <result column="favtimes" property="favtimes" jdbcType="INTEGER" />
+    <result column="sharetimes" property="sharetimes" jdbcType="INTEGER" />
+    <result column="stamp" property="stamp" jdbcType="TINYINT" />
+    <result column="icon" property="icon" jdbcType="TINYINT" />
+    <result column="pushedaid" property="pushedaid" jdbcType="INTEGER" />
+    <result column="cover" property="cover" jdbcType="SMALLINT" />
+    <result column="replycredit" property="replycredit" jdbcType="SMALLINT" />
+    <result column="relatebytag" property="relatebytag" jdbcType="CHAR" />
+    <result column="maxposition" property="maxposition" jdbcType="INTEGER" />
+    <result column="bgcolor" property="bgcolor" jdbcType="CHAR" />
+    <result column="comments" property="comments" jdbcType="INTEGER" />
+    <result column="hidden" property="hidden" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tid, fid, posttableid, typeid, sortid, readperm, price, author, authorid, subject, 
+    dateline, lastpost, lastposter, views, replies, displayorder, highlight, digest, 
+    rate, special, attachment, moderated, closed, stickreply, recommends, recommend_add, 
+    recommend_sub, heats, status, isgroup, favtimes, sharetimes, stamp, icon, pushedaid, 
+    cover, replycredit, relatebytag, maxposition, bgcolor, comments, hidden
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mc_forum_thread
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mc_forum_thread
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.miaogu.domain.ForumThread" >
+    insert into mc_forum_thread (tid, fid, posttableid, 
+      typeid, sortid, readperm, 
+      price, author, authorid, 
+      subject, dateline, lastpost, 
+      lastposter, views, replies, 
+      displayorder, highlight, digest, 
+      rate, special, attachment, moderated, 
+      closed, stickreply, recommends, 
+      recommend_add, recommend_sub, heats, 
+      status, isgroup, favtimes, 
+      sharetimes, stamp, icon, 
+      pushedaid, cover, replycredit, 
+      relatebytag, maxposition, bgcolor, 
+      comments, hidden)
+    values (#{tid,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, #{posttableid,jdbcType=SMALLINT}, 
+      #{typeid,jdbcType=SMALLINT}, #{sortid,jdbcType=SMALLINT}, #{readperm,jdbcType=TINYINT}, 
+      #{price,jdbcType=SMALLINT}, #{author,jdbcType=CHAR}, #{authorid,jdbcType=INTEGER}, 
+      #{subject,jdbcType=CHAR}, #{dateline,jdbcType=INTEGER}, #{lastpost,jdbcType=INTEGER}, 
+      #{lastposter,jdbcType=CHAR}, #{views,jdbcType=INTEGER}, #{replies,jdbcType=INTEGER}, 
+      #{displayorder,jdbcType=BIT}, #{highlight,jdbcType=BIT}, #{digest,jdbcType=BIT}, 
+      #{rate,jdbcType=BIT}, #{special,jdbcType=BIT}, #{attachment,jdbcType=BIT}, #{moderated,jdbcType=BIT}, 
+      #{closed,jdbcType=INTEGER}, #{stickreply,jdbcType=BIT}, #{recommends,jdbcType=SMALLINT}, 
+      #{recommendAdd,jdbcType=SMALLINT}, #{recommendSub,jdbcType=SMALLINT}, #{heats,jdbcType=INTEGER}, 
+      #{status,jdbcType=SMALLINT}, #{isgroup,jdbcType=BIT}, #{favtimes,jdbcType=INTEGER}, 
+      #{sharetimes,jdbcType=INTEGER}, #{stamp,jdbcType=TINYINT}, #{icon,jdbcType=TINYINT}, 
+      #{pushedaid,jdbcType=INTEGER}, #{cover,jdbcType=SMALLINT}, #{replycredit,jdbcType=SMALLINT}, 
+      #{relatebytag,jdbcType=CHAR}, #{maxposition,jdbcType=INTEGER}, #{bgcolor,jdbcType=CHAR}, 
+      #{comments,jdbcType=INTEGER}, #{hidden,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.miaogu.domain.ForumThread" >
+    insert into mc_forum_thread
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="posttableid != null" >
+        posttableid,
+      </if>
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="sortid != null" >
+        sortid,
+      </if>
+      <if test="readperm != null" >
+        readperm,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="authorid != null" >
+        authorid,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="dateline != null" >
+        dateline,
+      </if>
+      <if test="lastpost != null" >
+        lastpost,
+      </if>
+      <if test="lastposter != null" >
+        lastposter,
+      </if>
+      <if test="views != null" >
+        views,
+      </if>
+      <if test="replies != null" >
+        replies,
+      </if>
+      <if test="displayorder != null" >
+        displayorder,
+      </if>
+      <if test="highlight != null" >
+        highlight,
+      </if>
+      <if test="digest != null" >
+        digest,
+      </if>
+      <if test="rate != null" >
+        rate,
+      </if>
+      <if test="special != null" >
+        special,
+      </if>
+      <if test="attachment != null" >
+        attachment,
+      </if>
+      <if test="moderated != null" >
+        moderated,
+      </if>
+      <if test="closed != null" >
+        closed,
+      </if>
+      <if test="stickreply != null" >
+        stickreply,
+      </if>
+      <if test="recommends != null" >
+        recommends,
+      </if>
+      <if test="recommendAdd != null" >
+        recommend_add,
+      </if>
+      <if test="recommendSub != null" >
+        recommend_sub,
+      </if>
+      <if test="heats != null" >
+        heats,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isgroup != null" >
+        isgroup,
+      </if>
+      <if test="favtimes != null" >
+        favtimes,
+      </if>
+      <if test="sharetimes != null" >
+        sharetimes,
+      </if>
+      <if test="stamp != null" >
+        stamp,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="pushedaid != null" >
+        pushedaid,
+      </if>
+      <if test="cover != null" >
+        cover,
+      </if>
+      <if test="replycredit != null" >
+        replycredit,
+      </if>
+      <if test="relatebytag != null" >
+        relatebytag,
+      </if>
+      <if test="maxposition != null" >
+        maxposition,
+      </if>
+      <if test="bgcolor != null" >
+        bgcolor,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="hidden != null" >
+        hidden,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="posttableid != null" >
+        #{posttableid,jdbcType=SMALLINT},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=SMALLINT},
+      </if>
+      <if test="sortid != null" >
+        #{sortid,jdbcType=SMALLINT},
+      </if>
+      <if test="readperm != null" >
+        #{readperm,jdbcType=TINYINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=SMALLINT},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=CHAR},
+      </if>
+      <if test="authorid != null" >
+        #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=CHAR},
+      </if>
+      <if test="dateline != null" >
+        #{dateline,jdbcType=INTEGER},
+      </if>
+      <if test="lastpost != null" >
+        #{lastpost,jdbcType=INTEGER},
+      </if>
+      <if test="lastposter != null" >
+        #{lastposter,jdbcType=CHAR},
+      </if>
+      <if test="views != null" >
+        #{views,jdbcType=INTEGER},
+      </if>
+      <if test="replies != null" >
+        #{replies,jdbcType=INTEGER},
+      </if>
+      <if test="displayorder != null" >
+        #{displayorder,jdbcType=BIT},
+      </if>
+      <if test="highlight != null" >
+        #{highlight,jdbcType=BIT},
+      </if>
+      <if test="digest != null" >
+        #{digest,jdbcType=BIT},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=BIT},
+      </if>
+      <if test="special != null" >
+        #{special,jdbcType=BIT},
+      </if>
+      <if test="attachment != null" >
+        #{attachment,jdbcType=BIT},
+      </if>
+      <if test="moderated != null" >
+        #{moderated,jdbcType=BIT},
+      </if>
+      <if test="closed != null" >
+        #{closed,jdbcType=INTEGER},
+      </if>
+      <if test="stickreply != null" >
+        #{stickreply,jdbcType=BIT},
+      </if>
+      <if test="recommends != null" >
+        #{recommends,jdbcType=SMALLINT},
+      </if>
+      <if test="recommendAdd != null" >
+        #{recommendAdd,jdbcType=SMALLINT},
+      </if>
+      <if test="recommendSub != null" >
+        #{recommendSub,jdbcType=SMALLINT},
+      </if>
+      <if test="heats != null" >
+        #{heats,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="isgroup != null" >
+        #{isgroup,jdbcType=BIT},
+      </if>
+      <if test="favtimes != null" >
+        #{favtimes,jdbcType=INTEGER},
+      </if>
+      <if test="sharetimes != null" >
+        #{sharetimes,jdbcType=INTEGER},
+      </if>
+      <if test="stamp != null" >
+        #{stamp,jdbcType=TINYINT},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=TINYINT},
+      </if>
+      <if test="pushedaid != null" >
+        #{pushedaid,jdbcType=INTEGER},
+      </if>
+      <if test="cover != null" >
+        #{cover,jdbcType=SMALLINT},
+      </if>
+      <if test="replycredit != null" >
+        #{replycredit,jdbcType=SMALLINT},
+      </if>
+      <if test="relatebytag != null" >
+        #{relatebytag,jdbcType=CHAR},
+      </if>
+      <if test="maxposition != null" >
+        #{maxposition,jdbcType=INTEGER},
+      </if>
+      <if test="bgcolor != null" >
+        #{bgcolor,jdbcType=CHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=INTEGER},
+      </if>
+      <if test="hidden != null" >
+        #{hidden,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.miaogu.domain.ForumThread" >
+    update mc_forum_thread
+    <set >
+      <if test="fid != null" >
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="posttableid != null" >
+        posttableid = #{posttableid,jdbcType=SMALLINT},
+      </if>
+      <if test="typeid != null" >
+        typeid = #{typeid,jdbcType=SMALLINT},
+      </if>
+      <if test="sortid != null" >
+        sortid = #{sortid,jdbcType=SMALLINT},
+      </if>
+      <if test="readperm != null" >
+        readperm = #{readperm,jdbcType=TINYINT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=SMALLINT},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=CHAR},
+      </if>
+      <if test="authorid != null" >
+        authorid = #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=CHAR},
+      </if>
+      <if test="dateline != null" >
+        dateline = #{dateline,jdbcType=INTEGER},
+      </if>
+      <if test="lastpost != null" >
+        lastpost = #{lastpost,jdbcType=INTEGER},
+      </if>
+      <if test="lastposter != null" >
+        lastposter = #{lastposter,jdbcType=CHAR},
+      </if>
+      <if test="views != null" >
+        views = #{views,jdbcType=INTEGER},
+      </if>
+      <if test="replies != null" >
+        replies = #{replies,jdbcType=INTEGER},
+      </if>
+      <if test="displayorder != null" >
+        displayorder = #{displayorder,jdbcType=BIT},
+      </if>
+      <if test="highlight != null" >
+        highlight = #{highlight,jdbcType=BIT},
+      </if>
+      <if test="digest != null" >
+        digest = #{digest,jdbcType=BIT},
+      </if>
+      <if test="rate != null" >
+        rate = #{rate,jdbcType=BIT},
+      </if>
+      <if test="special != null" >
+        special = #{special,jdbcType=BIT},
+      </if>
+      <if test="attachment != null" >
+        attachment = #{attachment,jdbcType=BIT},
+      </if>
+      <if test="moderated != null" >
+        moderated = #{moderated,jdbcType=BIT},
+      </if>
+      <if test="closed != null" >
+        closed = #{closed,jdbcType=INTEGER},
+      </if>
+      <if test="stickreply != null" >
+        stickreply = #{stickreply,jdbcType=BIT},
+      </if>
+      <if test="recommends != null" >
+        recommends = #{recommends,jdbcType=SMALLINT},
+      </if>
+      <if test="recommendAdd != null" >
+        recommend_add = #{recommendAdd,jdbcType=SMALLINT},
+      </if>
+      <if test="recommendSub != null" >
+        recommend_sub = #{recommendSub,jdbcType=SMALLINT},
+      </if>
+      <if test="heats != null" >
+        heats = #{heats,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="isgroup != null" >
+        isgroup = #{isgroup,jdbcType=BIT},
+      </if>
+      <if test="favtimes != null" >
+        favtimes = #{favtimes,jdbcType=INTEGER},
+      </if>
+      <if test="sharetimes != null" >
+        sharetimes = #{sharetimes,jdbcType=INTEGER},
+      </if>
+      <if test="stamp != null" >
+        stamp = #{stamp,jdbcType=TINYINT},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=TINYINT},
+      </if>
+      <if test="pushedaid != null" >
+        pushedaid = #{pushedaid,jdbcType=INTEGER},
+      </if>
+      <if test="cover != null" >
+        cover = #{cover,jdbcType=SMALLINT},
+      </if>
+      <if test="replycredit != null" >
+        replycredit = #{replycredit,jdbcType=SMALLINT},
+      </if>
+      <if test="relatebytag != null" >
+        relatebytag = #{relatebytag,jdbcType=CHAR},
+      </if>
+      <if test="maxposition != null" >
+        maxposition = #{maxposition,jdbcType=INTEGER},
+      </if>
+      <if test="bgcolor != null" >
+        bgcolor = #{bgcolor,jdbcType=CHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=INTEGER},
+      </if>
+      <if test="hidden != null" >
+        hidden = #{hidden,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.miaogu.domain.ForumThread" >
+    update mc_forum_thread
+    set fid = #{fid,jdbcType=INTEGER},
+      posttableid = #{posttableid,jdbcType=SMALLINT},
+      typeid = #{typeid,jdbcType=SMALLINT},
+      sortid = #{sortid,jdbcType=SMALLINT},
+      readperm = #{readperm,jdbcType=TINYINT},
+      price = #{price,jdbcType=SMALLINT},
+      author = #{author,jdbcType=CHAR},
+      authorid = #{authorid,jdbcType=INTEGER},
+      subject = #{subject,jdbcType=CHAR},
+      dateline = #{dateline,jdbcType=INTEGER},
+      lastpost = #{lastpost,jdbcType=INTEGER},
+      lastposter = #{lastposter,jdbcType=CHAR},
+      views = #{views,jdbcType=INTEGER},
+      replies = #{replies,jdbcType=INTEGER},
+      displayorder = #{displayorder,jdbcType=BIT},
+      highlight = #{highlight,jdbcType=BIT},
+      digest = #{digest,jdbcType=BIT},
+      rate = #{rate,jdbcType=BIT},
+      special = #{special,jdbcType=BIT},
+      attachment = #{attachment,jdbcType=BIT},
+      moderated = #{moderated,jdbcType=BIT},
+      closed = #{closed,jdbcType=INTEGER},
+      stickreply = #{stickreply,jdbcType=BIT},
+      recommends = #{recommends,jdbcType=SMALLINT},
+      recommend_add = #{recommendAdd,jdbcType=SMALLINT},
+      recommend_sub = #{recommendSub,jdbcType=SMALLINT},
+      heats = #{heats,jdbcType=INTEGER},
+      status = #{status,jdbcType=SMALLINT},
+      isgroup = #{isgroup,jdbcType=BIT},
+      favtimes = #{favtimes,jdbcType=INTEGER},
+      sharetimes = #{sharetimes,jdbcType=INTEGER},
+      stamp = #{stamp,jdbcType=TINYINT},
+      icon = #{icon,jdbcType=TINYINT},
+      pushedaid = #{pushedaid,jdbcType=INTEGER},
+      cover = #{cover,jdbcType=SMALLINT},
+      replycredit = #{replycredit,jdbcType=SMALLINT},
+      relatebytag = #{relatebytag,jdbcType=CHAR},
+      maxposition = #{maxposition,jdbcType=INTEGER},
+      bgcolor = #{bgcolor,jdbcType=CHAR},
+      comments = #{comments,jdbcType=INTEGER},
+      hidden = #{hidden,jdbcType=SMALLINT}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

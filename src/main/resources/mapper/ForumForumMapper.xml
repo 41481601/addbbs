@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.miaogu.dao.ForumForumMapper" >
+  <resultMap id="BaseResultMap" type="cn.miaogu.domain.ForumForum" >
+    <id column="fid" property="fid" jdbcType="INTEGER" />
+    <result column="fup" property="fup" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="displayorder" property="displayorder" jdbcType="SMALLINT" />
+    <result column="styleid" property="styleid" jdbcType="SMALLINT" />
+    <result column="threads" property="threads" jdbcType="INTEGER" />
+    <result column="posts" property="posts" jdbcType="INTEGER" />
+    <result column="todayposts" property="todayposts" jdbcType="INTEGER" />
+    <result column="yesterdayposts" property="yesterdayposts" jdbcType="INTEGER" />
+    <result column="rank" property="rank" jdbcType="SMALLINT" />
+    <result column="oldrank" property="oldrank" jdbcType="SMALLINT" />
+    <result column="lastpost" property="lastpost" jdbcType="CHAR" />
+    <result column="domain" property="domain" jdbcType="CHAR" />
+    <result column="allowsmilies" property="allowsmilies" jdbcType="BIT" />
+    <result column="allowhtml" property="allowhtml" jdbcType="BIT" />
+    <result column="allowbbcode" property="allowbbcode" jdbcType="BIT" />
+    <result column="allowimgcode" property="allowimgcode" jdbcType="BIT" />
+    <result column="allowmediacode" property="allowmediacode" jdbcType="BIT" />
+    <result column="allowanonymous" property="allowanonymous" jdbcType="BIT" />
+    <result column="allowpostspecial" property="allowpostspecial" jdbcType="SMALLINT" />
+    <result column="allowspecialonly" property="allowspecialonly" jdbcType="BIT" />
+    <result column="allowappend" property="allowappend" jdbcType="BIT" />
+    <result column="alloweditrules" property="alloweditrules" jdbcType="BIT" />
+    <result column="allowfeed" property="allowfeed" jdbcType="BIT" />
+    <result column="allowside" property="allowside" jdbcType="BIT" />
+    <result column="recyclebin" property="recyclebin" jdbcType="BIT" />
+    <result column="modnewposts" property="modnewposts" jdbcType="BIT" />
+    <result column="jammer" property="jammer" jdbcType="BIT" />
+    <result column="disablewatermark" property="disablewatermark" jdbcType="BIT" />
+    <result column="inheritedmod" property="inheritedmod" jdbcType="BIT" />
+    <result column="autoclose" property="autoclose" jdbcType="SMALLINT" />
+    <result column="forumcolumns" property="forumcolumns" jdbcType="TINYINT" />
+    <result column="catforumcolumns" property="catforumcolumns" jdbcType="TINYINT" />
+    <result column="threadcaches" property="threadcaches" jdbcType="BIT" />
+    <result column="alloweditpost" property="alloweditpost" jdbcType="BIT" />
+    <result column="simple" property="simple" jdbcType="BIT" />
+    <result column="modworks" property="modworks" jdbcType="BIT" />
+    <result column="allowglobalstick" property="allowglobalstick" jdbcType="BIT" />
+    <result column="level" property="level" jdbcType="SMALLINT" />
+    <result column="commoncredits" property="commoncredits" jdbcType="INTEGER" />
+    <result column="archive" property="archive" jdbcType="BIT" />
+    <result column="recommend" property="recommend" jdbcType="SMALLINT" />
+    <result column="favtimes" property="favtimes" jdbcType="INTEGER" />
+    <result column="sharetimes" property="sharetimes" jdbcType="INTEGER" />
+    <result column="disablethumb" property="disablethumb" jdbcType="BIT" />
+    <result column="disablecollect" property="disablecollect" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fid, fup, type, name, status, displayorder, styleid, threads, posts, todayposts, 
+    yesterdayposts, rank, oldrank, lastpost, domain, allowsmilies, allowhtml, allowbbcode, 
+    allowimgcode, allowmediacode, allowanonymous, allowpostspecial, allowspecialonly, 
+    allowappend, alloweditrules, allowfeed, allowside, recyclebin, modnewposts, jammer, 
+    disablewatermark, inheritedmod, autoclose, forumcolumns, catforumcolumns, threadcaches, 
+    alloweditpost, simple, modworks, allowglobalstick, level, commoncredits, archive, 
+    recommend, favtimes, sharetimes, disablethumb, disablecollect
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mc_forum_forum
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mc_forum_forum
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.miaogu.domain.ForumForum" >
+    insert into mc_forum_forum (fid, fup, type, 
+      name, status, displayorder, 
+      styleid, threads, posts, 
+      todayposts, yesterdayposts, rank, 
+      oldrank, lastpost, domain, 
+      allowsmilies, allowhtml, allowbbcode, 
+      allowimgcode, allowmediacode, allowanonymous, 
+      allowpostspecial, allowspecialonly, allowappend, 
+      alloweditrules, allowfeed, allowside, 
+      recyclebin, modnewposts, jammer, 
+      disablewatermark, inheritedmod, autoclose, 
+      forumcolumns, catforumcolumns, threadcaches, 
+      alloweditpost, simple, modworks, 
+      allowglobalstick, level, commoncredits, 
+      archive, recommend, favtimes, 
+      sharetimes, disablethumb, disablecollect
+      )
+    values (#{fid,jdbcType=INTEGER}, #{fup,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, 
+      #{name,jdbcType=CHAR}, #{status,jdbcType=BIT}, #{displayorder,jdbcType=SMALLINT}, 
+      #{styleid,jdbcType=SMALLINT}, #{threads,jdbcType=INTEGER}, #{posts,jdbcType=INTEGER}, 
+      #{todayposts,jdbcType=INTEGER}, #{yesterdayposts,jdbcType=INTEGER}, #{rank,jdbcType=SMALLINT}, 
+      #{oldrank,jdbcType=SMALLINT}, #{lastpost,jdbcType=CHAR}, #{domain,jdbcType=CHAR}, 
+      #{allowsmilies,jdbcType=BIT}, #{allowhtml,jdbcType=BIT}, #{allowbbcode,jdbcType=BIT}, 
+      #{allowimgcode,jdbcType=BIT}, #{allowmediacode,jdbcType=BIT}, #{allowanonymous,jdbcType=BIT}, 
+      #{allowpostspecial,jdbcType=SMALLINT}, #{allowspecialonly,jdbcType=BIT}, #{allowappend,jdbcType=BIT}, 
+      #{alloweditrules,jdbcType=BIT}, #{allowfeed,jdbcType=BIT}, #{allowside,jdbcType=BIT}, 
+      #{recyclebin,jdbcType=BIT}, #{modnewposts,jdbcType=BIT}, #{jammer,jdbcType=BIT}, 
+      #{disablewatermark,jdbcType=BIT}, #{inheritedmod,jdbcType=BIT}, #{autoclose,jdbcType=SMALLINT}, 
+      #{forumcolumns,jdbcType=TINYINT}, #{catforumcolumns,jdbcType=TINYINT}, #{threadcaches,jdbcType=BIT}, 
+      #{alloweditpost,jdbcType=BIT}, #{simple,jdbcType=BIT}, #{modworks,jdbcType=BIT}, 
+      #{allowglobalstick,jdbcType=BIT}, #{level,jdbcType=SMALLINT}, #{commoncredits,jdbcType=INTEGER}, 
+      #{archive,jdbcType=BIT}, #{recommend,jdbcType=SMALLINT}, #{favtimes,jdbcType=INTEGER}, 
+      #{sharetimes,jdbcType=INTEGER}, #{disablethumb,jdbcType=BIT}, #{disablecollect,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.miaogu.domain.ForumForum" >
+    insert into mc_forum_forum
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="fup != null" >
+        fup,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="displayorder != null" >
+        displayorder,
+      </if>
+      <if test="styleid != null" >
+        styleid,
+      </if>
+      <if test="threads != null" >
+        threads,
+      </if>
+      <if test="posts != null" >
+        posts,
+      </if>
+      <if test="todayposts != null" >
+        todayposts,
+      </if>
+      <if test="yesterdayposts != null" >
+        yesterdayposts,
+      </if>
+      <if test="rank != null" >
+        rank,
+      </if>
+      <if test="oldrank != null" >
+        oldrank,
+      </if>
+      <if test="lastpost != null" >
+        lastpost,
+      </if>
+      <if test="domain != null" >
+        domain,
+      </if>
+      <if test="allowsmilies != null" >
+        allowsmilies,
+      </if>
+      <if test="allowhtml != null" >
+        allowhtml,
+      </if>
+      <if test="allowbbcode != null" >
+        allowbbcode,
+      </if>
+      <if test="allowimgcode != null" >
+        allowimgcode,
+      </if>
+      <if test="allowmediacode != null" >
+        allowmediacode,
+      </if>
+      <if test="allowanonymous != null" >
+        allowanonymous,
+      </if>
+      <if test="allowpostspecial != null" >
+        allowpostspecial,
+      </if>
+      <if test="allowspecialonly != null" >
+        allowspecialonly,
+      </if>
+      <if test="allowappend != null" >
+        allowappend,
+      </if>
+      <if test="alloweditrules != null" >
+        alloweditrules,
+      </if>
+      <if test="allowfeed != null" >
+        allowfeed,
+      </if>
+      <if test="allowside != null" >
+        allowside,
+      </if>
+      <if test="recyclebin != null" >
+        recyclebin,
+      </if>
+      <if test="modnewposts != null" >
+        modnewposts,
+      </if>
+      <if test="jammer != null" >
+        jammer,
+      </if>
+      <if test="disablewatermark != null" >
+        disablewatermark,
+      </if>
+      <if test="inheritedmod != null" >
+        inheritedmod,
+      </if>
+      <if test="autoclose != null" >
+        autoclose,
+      </if>
+      <if test="forumcolumns != null" >
+        forumcolumns,
+      </if>
+      <if test="catforumcolumns != null" >
+        catforumcolumns,
+      </if>
+      <if test="threadcaches != null" >
+        threadcaches,
+      </if>
+      <if test="alloweditpost != null" >
+        alloweditpost,
+      </if>
+      <if test="simple != null" >
+        simple,
+      </if>
+      <if test="modworks != null" >
+        modworks,
+      </if>
+      <if test="allowglobalstick != null" >
+        allowglobalstick,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="commoncredits != null" >
+        commoncredits,
+      </if>
+      <if test="archive != null" >
+        archive,
+      </if>
+      <if test="recommend != null" >
+        recommend,
+      </if>
+      <if test="favtimes != null" >
+        favtimes,
+      </if>
+      <if test="sharetimes != null" >
+        sharetimes,
+      </if>
+      <if test="disablethumb != null" >
+        disablethumb,
+      </if>
+      <if test="disablecollect != null" >
+        disablecollect,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="fup != null" >
+        #{fup,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="displayorder != null" >
+        #{displayorder,jdbcType=SMALLINT},
+      </if>
+      <if test="styleid != null" >
+        #{styleid,jdbcType=SMALLINT},
+      </if>
+      <if test="threads != null" >
+        #{threads,jdbcType=INTEGER},
+      </if>
+      <if test="posts != null" >
+        #{posts,jdbcType=INTEGER},
+      </if>
+      <if test="todayposts != null" >
+        #{todayposts,jdbcType=INTEGER},
+      </if>
+      <if test="yesterdayposts != null" >
+        #{yesterdayposts,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null" >
+        #{rank,jdbcType=SMALLINT},
+      </if>
+      <if test="oldrank != null" >
+        #{oldrank,jdbcType=SMALLINT},
+      </if>
+      <if test="lastpost != null" >
+        #{lastpost,jdbcType=CHAR},
+      </if>
+      <if test="domain != null" >
+        #{domain,jdbcType=CHAR},
+      </if>
+      <if test="allowsmilies != null" >
+        #{allowsmilies,jdbcType=BIT},
+      </if>
+      <if test="allowhtml != null" >
+        #{allowhtml,jdbcType=BIT},
+      </if>
+      <if test="allowbbcode != null" >
+        #{allowbbcode,jdbcType=BIT},
+      </if>
+      <if test="allowimgcode != null" >
+        #{allowimgcode,jdbcType=BIT},
+      </if>
+      <if test="allowmediacode != null" >
+        #{allowmediacode,jdbcType=BIT},
+      </if>
+      <if test="allowanonymous != null" >
+        #{allowanonymous,jdbcType=BIT},
+      </if>
+      <if test="allowpostspecial != null" >
+        #{allowpostspecial,jdbcType=SMALLINT},
+      </if>
+      <if test="allowspecialonly != null" >
+        #{allowspecialonly,jdbcType=BIT},
+      </if>
+      <if test="allowappend != null" >
+        #{allowappend,jdbcType=BIT},
+      </if>
+      <if test="alloweditrules != null" >
+        #{alloweditrules,jdbcType=BIT},
+      </if>
+      <if test="allowfeed != null" >
+        #{allowfeed,jdbcType=BIT},
+      </if>
+      <if test="allowside != null" >
+        #{allowside,jdbcType=BIT},
+      </if>
+      <if test="recyclebin != null" >
+        #{recyclebin,jdbcType=BIT},
+      </if>
+      <if test="modnewposts != null" >
+        #{modnewposts,jdbcType=BIT},
+      </if>
+      <if test="jammer != null" >
+        #{jammer,jdbcType=BIT},
+      </if>
+      <if test="disablewatermark != null" >
+        #{disablewatermark,jdbcType=BIT},
+      </if>
+      <if test="inheritedmod != null" >
+        #{inheritedmod,jdbcType=BIT},
+      </if>
+      <if test="autoclose != null" >
+        #{autoclose,jdbcType=SMALLINT},
+      </if>
+      <if test="forumcolumns != null" >
+        #{forumcolumns,jdbcType=TINYINT},
+      </if>
+      <if test="catforumcolumns != null" >
+        #{catforumcolumns,jdbcType=TINYINT},
+      </if>
+      <if test="threadcaches != null" >
+        #{threadcaches,jdbcType=BIT},
+      </if>
+      <if test="alloweditpost != null" >
+        #{alloweditpost,jdbcType=BIT},
+      </if>
+      <if test="simple != null" >
+        #{simple,jdbcType=BIT},
+      </if>
+      <if test="modworks != null" >
+        #{modworks,jdbcType=BIT},
+      </if>
+      <if test="allowglobalstick != null" >
+        #{allowglobalstick,jdbcType=BIT},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="commoncredits != null" >
+        #{commoncredits,jdbcType=INTEGER},
+      </if>
+      <if test="archive != null" >
+        #{archive,jdbcType=BIT},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=SMALLINT},
+      </if>
+      <if test="favtimes != null" >
+        #{favtimes,jdbcType=INTEGER},
+      </if>
+      <if test="sharetimes != null" >
+        #{sharetimes,jdbcType=INTEGER},
+      </if>
+      <if test="disablethumb != null" >
+        #{disablethumb,jdbcType=BIT},
+      </if>
+      <if test="disablecollect != null" >
+        #{disablecollect,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.miaogu.domain.ForumForum" >
+    update mc_forum_forum
+    <set >
+      <if test="fup != null" >
+        fup = #{fup,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="displayorder != null" >
+        displayorder = #{displayorder,jdbcType=SMALLINT},
+      </if>
+      <if test="styleid != null" >
+        styleid = #{styleid,jdbcType=SMALLINT},
+      </if>
+      <if test="threads != null" >
+        threads = #{threads,jdbcType=INTEGER},
+      </if>
+      <if test="posts != null" >
+        posts = #{posts,jdbcType=INTEGER},
+      </if>
+      <if test="todayposts != null" >
+        todayposts = #{todayposts,jdbcType=INTEGER},
+      </if>
+      <if test="yesterdayposts != null" >
+        yesterdayposts = #{yesterdayposts,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null" >
+        rank = #{rank,jdbcType=SMALLINT},
+      </if>
+      <if test="oldrank != null" >
+        oldrank = #{oldrank,jdbcType=SMALLINT},
+      </if>
+      <if test="lastpost != null" >
+        lastpost = #{lastpost,jdbcType=CHAR},
+      </if>
+      <if test="domain != null" >
+        domain = #{domain,jdbcType=CHAR},
+      </if>
+      <if test="allowsmilies != null" >
+        allowsmilies = #{allowsmilies,jdbcType=BIT},
+      </if>
+      <if test="allowhtml != null" >
+        allowhtml = #{allowhtml,jdbcType=BIT},
+      </if>
+      <if test="allowbbcode != null" >
+        allowbbcode = #{allowbbcode,jdbcType=BIT},
+      </if>
+      <if test="allowimgcode != null" >
+        allowimgcode = #{allowimgcode,jdbcType=BIT},
+      </if>
+      <if test="allowmediacode != null" >
+        allowmediacode = #{allowmediacode,jdbcType=BIT},
+      </if>
+      <if test="allowanonymous != null" >
+        allowanonymous = #{allowanonymous,jdbcType=BIT},
+      </if>
+      <if test="allowpostspecial != null" >
+        allowpostspecial = #{allowpostspecial,jdbcType=SMALLINT},
+      </if>
+      <if test="allowspecialonly != null" >
+        allowspecialonly = #{allowspecialonly,jdbcType=BIT},
+      </if>
+      <if test="allowappend != null" >
+        allowappend = #{allowappend,jdbcType=BIT},
+      </if>
+      <if test="alloweditrules != null" >
+        alloweditrules = #{alloweditrules,jdbcType=BIT},
+      </if>
+      <if test="allowfeed != null" >
+        allowfeed = #{allowfeed,jdbcType=BIT},
+      </if>
+      <if test="allowside != null" >
+        allowside = #{allowside,jdbcType=BIT},
+      </if>
+      <if test="recyclebin != null" >
+        recyclebin = #{recyclebin,jdbcType=BIT},
+      </if>
+      <if test="modnewposts != null" >
+        modnewposts = #{modnewposts,jdbcType=BIT},
+      </if>
+      <if test="jammer != null" >
+        jammer = #{jammer,jdbcType=BIT},
+      </if>
+      <if test="disablewatermark != null" >
+        disablewatermark = #{disablewatermark,jdbcType=BIT},
+      </if>
+      <if test="inheritedmod != null" >
+        inheritedmod = #{inheritedmod,jdbcType=BIT},
+      </if>
+      <if test="autoclose != null" >
+        autoclose = #{autoclose,jdbcType=SMALLINT},
+      </if>
+      <if test="forumcolumns != null" >
+        forumcolumns = #{forumcolumns,jdbcType=TINYINT},
+      </if>
+      <if test="catforumcolumns != null" >
+        catforumcolumns = #{catforumcolumns,jdbcType=TINYINT},
+      </if>
+      <if test="threadcaches != null" >
+        threadcaches = #{threadcaches,jdbcType=BIT},
+      </if>
+      <if test="alloweditpost != null" >
+        alloweditpost = #{alloweditpost,jdbcType=BIT},
+      </if>
+      <if test="simple != null" >
+        simple = #{simple,jdbcType=BIT},
+      </if>
+      <if test="modworks != null" >
+        modworks = #{modworks,jdbcType=BIT},
+      </if>
+      <if test="allowglobalstick != null" >
+        allowglobalstick = #{allowglobalstick,jdbcType=BIT},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="commoncredits != null" >
+        commoncredits = #{commoncredits,jdbcType=INTEGER},
+      </if>
+      <if test="archive != null" >
+        archive = #{archive,jdbcType=BIT},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=SMALLINT},
+      </if>
+      <if test="favtimes != null" >
+        favtimes = #{favtimes,jdbcType=INTEGER},
+      </if>
+      <if test="sharetimes != null" >
+        sharetimes = #{sharetimes,jdbcType=INTEGER},
+      </if>
+      <if test="disablethumb != null" >
+        disablethumb = #{disablethumb,jdbcType=BIT},
+      </if>
+      <if test="disablecollect != null" >
+        disablecollect = #{disablecollect,jdbcType=BIT},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.miaogu.domain.ForumForum" >
+    update mc_forum_forum
+    set fup = #{fup,jdbcType=INTEGER},
+      type = #{type,jdbcType=CHAR},
+      name = #{name,jdbcType=CHAR},
+      status = #{status,jdbcType=BIT},
+      displayorder = #{displayorder,jdbcType=SMALLINT},
+      styleid = #{styleid,jdbcType=SMALLINT},
+      threads = #{threads,jdbcType=INTEGER},
+      posts = #{posts,jdbcType=INTEGER},
+      todayposts = #{todayposts,jdbcType=INTEGER},
+      yesterdayposts = #{yesterdayposts,jdbcType=INTEGER},
+      rank = #{rank,jdbcType=SMALLINT},
+      oldrank = #{oldrank,jdbcType=SMALLINT},
+      lastpost = #{lastpost,jdbcType=CHAR},
+      domain = #{domain,jdbcType=CHAR},
+      allowsmilies = #{allowsmilies,jdbcType=BIT},
+      allowhtml = #{allowhtml,jdbcType=BIT},
+      allowbbcode = #{allowbbcode,jdbcType=BIT},
+      allowimgcode = #{allowimgcode,jdbcType=BIT},
+      allowmediacode = #{allowmediacode,jdbcType=BIT},
+      allowanonymous = #{allowanonymous,jdbcType=BIT},
+      allowpostspecial = #{allowpostspecial,jdbcType=SMALLINT},
+      allowspecialonly = #{allowspecialonly,jdbcType=BIT},
+      allowappend = #{allowappend,jdbcType=BIT},
+      alloweditrules = #{alloweditrules,jdbcType=BIT},
+      allowfeed = #{allowfeed,jdbcType=BIT},
+      allowside = #{allowside,jdbcType=BIT},
+      recyclebin = #{recyclebin,jdbcType=BIT},
+      modnewposts = #{modnewposts,jdbcType=BIT},
+      jammer = #{jammer,jdbcType=BIT},
+      disablewatermark = #{disablewatermark,jdbcType=BIT},
+      inheritedmod = #{inheritedmod,jdbcType=BIT},
+      autoclose = #{autoclose,jdbcType=SMALLINT},
+      forumcolumns = #{forumcolumns,jdbcType=TINYINT},
+      catforumcolumns = #{catforumcolumns,jdbcType=TINYINT},
+      threadcaches = #{threadcaches,jdbcType=BIT},
+      alloweditpost = #{alloweditpost,jdbcType=BIT},
+      simple = #{simple,jdbcType=BIT},
+      modworks = #{modworks,jdbcType=BIT},
+      allowglobalstick = #{allowglobalstick,jdbcType=BIT},
+      level = #{level,jdbcType=SMALLINT},
+      commoncredits = #{commoncredits,jdbcType=INTEGER},
+      archive = #{archive,jdbcType=BIT},
+      recommend = #{recommend,jdbcType=SMALLINT},
+      favtimes = #{favtimes,jdbcType=INTEGER},
+      sharetimes = #{sharetimes,jdbcType=INTEGER},
+      disablethumb = #{disablethumb,jdbcType=BIT},
+      disablecollect = #{disablecollect,jdbcType=BIT}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>
