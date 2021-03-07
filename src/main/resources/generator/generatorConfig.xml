@@ -19,7 +19,7 @@
         <!--数据库链接URL，用户名、密码
            1.一般jdbc数据库的版本6.x以上，都是com.mysql.cj.jdbc.Driver  其他的低版本就是com.mysql.jdbc.Driver
          -->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/bbs"
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://121.36.66.98:3306/mcbbsDis"
                         userId="root" password="ljh520...">
             <!--解決8版本数据库生成会有BLOBs和Key的问题-->
             <property name="nullCatalogMeansCurrent" value="true" />
@@ -97,30 +97,30 @@
 
 
         <!--帖子======================================================-->
-        <table tableName="bbspaqu" domainObjectName="Bbspaqu" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
-
-        <!--<table tableName="pre_forum_post_tableid" domainObjectName="ForumPostTableid" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
-
-        <table tableName="pre_common_member_count" domainObjectName="CommonMemberCount" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
-
-        <table tableName="pre_forum_forum" domainObjectName="ForumForum" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
-
-
-        <table tableName="pre_forum_post" domainObjectName="ForumPost" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
-
-        <table tableName="pre_forum_thread" domainObjectName="ForumThread" enableCountByExample="false"
+        <!--<table tableName="bbspaqu" domainObjectName="Bbspaqu" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>-->
+
+        <table tableName="mc_forum_post_tableid" domainObjectName="ForumPostTableid" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+
+        <table tableName="mc_common_member_count" domainObjectName="CommonMemberCount" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+
+        <table tableName="mc_forum_forum" domainObjectName="ForumForum" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+
+
+        <table tableName="mc_forum_post" domainObjectName="ForumPost" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+
+        <table tableName="mc_forum_thread" domainObjectName="ForumThread" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
 
 
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名   praise  -->

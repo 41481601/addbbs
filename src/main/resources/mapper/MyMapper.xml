@@ -10,14 +10,14 @@
         <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="pid">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO pre_forum_post_tableid (pid) values (0)
+        INSERT INTO mc_forum_post_tableid (pid) values (0)
     </insert>
 
     <insert id="addForumThread" parameterType="cn.miaogu.domain.ForumThread" >
         <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="tid">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO pre_forum_thread
+        INSERT INTO mc_forum_thread
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="tid != null" >
                 tid,
@@ -277,17 +277,17 @@
     </insert>
 
     <update id="updateCommonMemberCount" parameterType="java.lang.Integer" >
-        update pre_common_member_count
-        set posts += 1,
-            threads += 1
+        update mc_common_member_count
+        set posts = posts+1,
+            threads = threads+1
         where uid = #{uid,jdbcType=INTEGER}
     </update>
 
     <update id="updateForumForum" parameterType="cn.miaogu.domain.ForumForum" >
-        update pre_forum_forum
-        set threads += 1,
-            posts += 1,
-            todayposts += 1,
+        update mc_forum_forum
+        set threads = threads+1,
+            posts = posts+1,
+            todayposts = todayposts+1,
             lastpost = #{lastpost}
         where fid = #{fid,jdbcType=INTEGER}
     </update>

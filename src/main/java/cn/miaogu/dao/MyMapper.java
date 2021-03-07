@@ -2,6 +2,7 @@ package cn.miaogu.dao;
 
 import cn.miaogu.domain.Bbspaqu;
 import cn.miaogu.domain.ForumForum;
+import cn.miaogu.domain.ForumPostTableid;
 import cn.miaogu.domain.ForumThread;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface MyMapper{
     List<Bbspaqu> selectAllBbs();
 
     //插入数据获取返回值
-    int insertForum();
+    int insertForum(ForumPostTableid forumPostTableid);
     int addForumThread(ForumThread forumThread);
     void updateCommonMemberCount(Integer uid);
     void updateForumForum(ForumForum forumForum);

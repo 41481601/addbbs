@@ -68,15 +68,33 @@ public class WxController {
     //region 查询bbspaqu表
     @RequestMapping("/bbspaqu")
     @ResponseBody
-    public List<Bbspaqu> addBiao(HttpServletRequest request, HttpServletResponse response
+    public String addBiao(HttpServletRequest request, HttpServletResponse response
     ) throws Exception {
         List<Bbspaqu> bbspaqus = new ArrayList<>();
+        String k="";
         try{
             bbspaqus = myMapper.selectAllBbs();
+            for (int i=0;i<bbspaqus.size();i++){
+                String zhengwen = bbspaqus.get(i).getZhengwen();
+                //处理正文
+                String clzhengwen = MyUbb.htmlToUbb(zhengwen);
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("Text",clzhengwen);
+                jsonObject.put("Fid",72);
+                jsonObject.put("author","大番茄");
+                jsonObject.put("authorid",1);
+                jsonObject.put("subject",bbspaqus.get(i).getBiaoti());
+                System.out.println(clzhengwen);
+                int ks = fabutiezi(jsonObject);
+                k = String.valueOf(ks);
+            }
         }catch (Exception e){
             System.out.println(e);
+            k = e.toString();
         }
-        return bbspaqus;
+
+        return k;
     }
     //endregion
 
@@ -91,8 +109,9 @@ public class WxController {
         String zwText = tiezi.get("Text").toString();//正文
         try {
             //获取pid
-            int pid = myMapper.insertForum();
-
+            ForumPostTableid forumPostx2 = new ForumPostTableid();
+            myMapper.insertForum(forumPostx2);
+            int pid = forumPostx2.getPid();
             //插入forum_thread 并获取到tid。
             ForumThread forumThread1 = new ForumThread();
             forumThread1.setFid(Fid);
@@ -104,7 +123,8 @@ public class WxController {
             forumThread1.setLastposter(Author);//最后回复的人
             forumThread1.setStatus((short)32);
             forumThread1.setMaxposition(1);
-            int tid = myMapper.addForumThread(forumThread1);//帖子ID
+            myMapper.addForumThread(forumThread1);//帖子ID
+            int tid = forumThread1.getTid();
 
             //插入主题
             ForumPost forumPost = new ForumPost();
@@ -120,7 +140,6 @@ public class WxController {
             forumPost.setUseip("123.145.82.103");
             forumPost.setPort((short)8847);
             forumPost.setInvisible(false);
-            forumPost.setPosition(1);
             forumPostMapper.insertSelective(forumPost);
 
             //操作pre_common_member_count表  修改
@@ -129,7 +148,7 @@ public class WxController {
 
             ForumForum forumForum = new ForumForum();
             forumForum.setFid(Fid);
-            forumForum.setLastpost("tid\\t"+Subject+"\\t"+nowTime+"\\t"+Author);
+            forumForum.setLastpost("tid+\\t"+Subject+"\\t"+nowTime+"\\t"+Author);
             myMapper.updateForumForum(forumForum);
         }catch (Exception E){
             System.out.println(E);
